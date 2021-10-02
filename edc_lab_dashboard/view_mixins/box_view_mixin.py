@@ -95,25 +95,25 @@ class BoxViewMixin(ContextMixin):
         box_item_identifier = ''.join(
             self.original_box_item_identifier.split('-'))
         try:
-            obj = self.aliquot_model.objects.get(
-                aliquot_identifier=box_item_identifier)
+            obj = self.requisition_model.objects.get(
+                requisition_identifier=box_item_identifier)
         except ObjectDoesNotExist:
             message = 'Invalid aliquot identifier. Got {}.'.format(
                 self.original_box_item_identifier or 'None')
             messages.error(self.request, message)
             raise SpecimenError(message)
-        if obj.is_primary and not self.box.accept_primary:
-            message = 'Box does not accept "primary" specimens. Got {} is primary.'.format(
-                self.original_box_item_identifier)
-            messages.error(self.request, message)
-            raise SpecimenError(message)
-        elif obj.numeric_code not in self.box.specimen_types.split(','):
-            message = (
-                'Invalid specimen type. Box accepts types {}. '
-                'Got {} is type {}.'.format(
-                    ', '.join(self.box.specimen_types.split(',')),
-                    self.original_box_item_identifier,
-                    obj.numeric_code))
-            messages.error(self.request, message)
-            raise SpecimenError(message)
+        # if obj.is_primary and not self.box.accept_primary:
+        #     message = 'Box does not accept "primary" specimens. Got {} is primary.'.format(
+        #         self.original_box_item_identifier)
+        #     messages.error(self.request, message)
+        #     raise SpecimenError(message)
+        # elif obj.numeric_code not in self.box.specimen_types.split(','):
+        #     message = (
+        #         'Invalid specimen type. Box accepts types {}. '
+        #         'Got {} is type {}.'.format(
+        #             ', '.join(self.box.specimen_types.split(',')),
+        #             self.original_box_item_identifier,
+        #             obj.numeric_code))
+        #     messages.error(self.request, message)
+        #     raise SpecimenError(message)
         return box_item_identifier
