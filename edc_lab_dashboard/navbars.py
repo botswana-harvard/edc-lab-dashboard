@@ -14,10 +14,10 @@ specimens.append_item(
                label='Receive',
                url_name=dashboard_urls.get('receive_listboard_url')))
 
-specimens.append_item(
-    NavbarItem(name='process',
-               label='Process',
-               url_name=dashboard_urls.get('process_listboard_url')))
+# specimens.append_item(
+#     NavbarItem(name='process',
+#                label='Process',
+#                url_name=dashboard_urls.get('process_listboard_url')))
 
 specimens.append_item(
     NavbarItem(name='pack',
@@ -29,10 +29,10 @@ specimens.append_item(
                label='Manifest',
                url_name=dashboard_urls.get('manifest_listboard_url')))
 
-specimens.append_item(
-    NavbarItem(name='aliquot',
-               label='Aliquot',
-               url_name=dashboard_urls.get('aliquot_listboard_url')))
+# specimens.append_item(
+#     NavbarItem(name='aliquot',
+#                label='Aliquot',
+#                url_name=dashboard_urls.get('aliquot_listboard_url')))
 
 specimens.append_item(
     NavbarItem(name='result',
